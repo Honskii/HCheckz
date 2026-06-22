@@ -1,5 +1,6 @@
 # hcheckz
-[![codecov](https://codecov.io/github/Honskii/HCheckz/graph/badge.svg?token=SCNQ78JD2K)](https://codecov.io/github/Honskii/HCheckz)
+[![Tests](https://img.shields.io/github/actions/workflow/status/Honskii/HCheckz/tests.yml?branch=main&style=flat-square)](https://github.com/Honskii/HCheckz/actions)
+[![Coverage](https://img.shields.io/codecov/c/github/Honskii/HCheckz?style=flat-square)](https://codecov.io/gh/Honskii/HCheckz)
 
 Tiny asynchronous healthcheck server.
 
