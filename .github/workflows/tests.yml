@@ -20,7 +20,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -e .
-          pip install pytest pytest-cov
+          pip install pytest pytest-cov pytest-tornasync
 
       - name: Run tests
         run: pytest --cov=hcheckz --cov-branch --cov-report=xml

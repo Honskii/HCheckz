@@ -110,6 +110,7 @@ class _Manager:
 class _HealthCheck:
     is_server_active: bool = False
     manager = _Manager
+    _server_task: Optional[asyncio.Task] = None
 
     @staticmethod
     def _parse_request(
@@ -224,7 +225,7 @@ class _HealthCheck:
                     pass
 
     @classmethod
-    async def start_server(cls, host: str, port: int|str, timeout: int|float) -> Optional[asyncio.Task]:
+    async def start_server(cls, host: str, port: int|str, timeout: int|float = 2) -> Optional[asyncio.Task]:
         if cls.is_server_active:
             log.info("Tried to start the HealthCheck server when it was active")
             return
@@ -241,13 +242,26 @@ class _HealthCheck:
             partial(cls._handle_client_asyncio, timeout=timeout),
             host=host, port=port
         )
-        server_task = asyncio.create_task(server.serve_forever())
+        cls._server_task = asyncio.create_task(server.serve_forever())
         cls.is_server_active = True
         log.info(f"HealthCheck server running on http://{host}:{port}")
-        return server_task
+        return cls._server_task
+
+    @classmethod
+    async def stop_server(cls) -> None:
+        if cls._server_task:
+            cls._server_task.cancel()
+            try:
+                await cls._server_task
+            except asyncio.CancelledError:
+                pass
+            cls._server_task = None
+        cls.is_server_active = False
+        log.info("HealthCheck server stopped successfully")
 
 
 start_healthchecks = _HealthCheck.start_server
+stop_healthchecks = _HealthCheck.stop_server
 readiness_point = _HealthCheck.manager.readiness_point
 del_readiness_point = _HealthCheck.manager.delete_readiness_point
 set_unready = _HealthCheck.manager.set_unready

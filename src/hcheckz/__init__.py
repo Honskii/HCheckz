@@ -1,5 +1,6 @@
 from .hcheckz import (
     start_healthchecks,
+    stop_healthchecks,
     readiness_point,
     del_readiness_point,
     set_ready,
@@ -8,6 +9,7 @@ from .hcheckz import (
 
 __all__ = [
     "start_healthchecks",
+    "stop_healthchecks",
     "readiness_point",
     "del_readiness_point",
     "set_unready",
