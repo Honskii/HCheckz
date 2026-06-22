@@ -55,13 +55,12 @@ if __name__ == "__main__":
 
 __200 OK__
 
-> [!example]- text/plain
 >```text
 > 200 OK
 > ```
 
 __503 Service Unavailable__ (0 points registred)
-> [!example]- applixation/json
+
 >```json
 > {
 >     "reason": "Nothing Registred"
@@ -69,7 +68,7 @@ __503 Service Unavailable__ (0 points registred)
 > ```
 
 __503 Service Unavailable__ (problems)
-> [!example]- applixation/json
+
 >```json
 > {
 >     "reason": "Unreadinesses",
@@ -95,21 +94,21 @@ Always returns `text/plain` body: `200 OK`
 
 ### 400 Bad Request
 Always returns `text/plain` body
-> [!example]- text/plain
+
 >```text
 > 400 Bad Request: Request line too long
 > ```
 
 ### 404 Not Found
 Always returns `text/plain` body
-> [!example]- text/plain
+
 >```text
 > 404 Not Found
 > ```
 
 ### 405 Method Not Allowed
 Always returns `text/plain` body
-> [!example]- text/plain
+
 >```text
 > 405 Method Not Allowed
 > ```
