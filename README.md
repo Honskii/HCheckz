@@ -1,6 +1,7 @@
 # hcheckz
 [![Tests](https://img.shields.io/github/actions/workflow/status/Honskii/HCheckz/tests.yml?branch=main&style=flat-square)](https://github.com/Honskii/HCheckz/actions)
 [![Coverage](https://img.shields.io/codecov/c/github/Honskii/HCheckz?style=flat-square)](https://codecov.io/gh/Honskii/HCheckz)
+[![Python Version](https://img.shields.io/badge/python-3.11-blue?style=flat-square)](https://www.python.org/)
 
 Tiny asynchronous healthcheck server.
 
